@@ -2,6 +2,9 @@ FROM node:alpine
 ENV NODE_OPTIONS=--openssl-legacy-provider
 WORKDIR "/app"
 COPY ./package.json ./
+RUN npm cache clear --force
+RUN npm set timeout=1000000
+RUN echo prefer-offline=true >> ~/.npmrc
 RUN npm install
 COPY . .
 CMD ["npm", "run", "start"]
