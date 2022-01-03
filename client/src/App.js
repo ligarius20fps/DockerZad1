@@ -11,16 +11,10 @@ function App() {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React 3
-          </a>
-          <Link to="/">Home</Link>
-          <Link to="/otherpage">Other Page</Link>
+          <h4>Realizacja zadania nr 1 w ramach laboratorium PFSwCO</h4>
+          <h5>Mateusz Klimkowicz</h5>
+          <Link to="/">Kalkulator</Link>
+          <Link to="/otherpage">Dokumantacja</Link>
         </header>
         <div>
           <Route exact path="/" component={Fib} />
