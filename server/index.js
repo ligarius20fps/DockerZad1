@@ -21,7 +21,7 @@ const pgClient = new Pool({
 
 pgClient.on("connect", (client) => {
   client
-    .query("CREATE TABLE IF NOT EXISTS values (number INT)")
+    .query("CREATE TABLE IF NOT EXISTS values (number INT, created_at TIMESTAMP default NOW())")
     .catch((err) => console.error(err));
 });
 
@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/values/all", async (req, res) => {
-  const values = await pgClient.query("SELECT * from values");
+  const values = await pgClient.query("SELECT number from values ORDER BY created_at DESC LIMIT 10");
 
   res.send(values.rows);
 });
